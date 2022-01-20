@@ -1,0 +1,205 @@
+/* mini cart button*/
+
+.nav-shopping-cart {
+	position: relative;
+}
+
+.nav-cart-btn {
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	display: flex;
+	position: relative;
+}
+
+/* mini cart image */
+.nav-cart-btn img {
+	position: absolute;
+}
+
+/* Number of cart items circle*/
+
+.nav-cart-btn .cart-info {
+	position: relative;
+	height: 20px;
+	width: 20px;
+	background-color: green;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 13px;
+	top: -10px;
+	right: -15px;
+	text-align: center;
+}
+
+/* mini cart items container */
+
+.nav-shopping-cart .mini-cart {
+	display: none;
+	position: absolute;
+	right: 0;
+	bottom: -1;
+	margin-top: 1em;
+	padding: 1em;
+	background-color: white;
+	min-width: 25vw;
+	z-index: 21;
+	overflow-y: scroll;
+	height: 50vh;
+}
+
+.nav-shopping-cart .mini-cart.cart-active {
+	display: block;
+}
+
+/* mini cart items */
+
+.nav-shopping-cart .mini-cart .mini-cart-items {
+	display: flex;
+}
+
+.mini-cart-details {
+	margin: 5px;
+	padding: 10px;
+	display: flex;
+	justify-content: space-between;
+	flex-basis: 60%;
+}
+
+.mini-cart-image {
+	margin: 5px;
+	display: flex;
+	flex-basis: 40%;
+	object-fit: fill;
+	height: 25vh;
+	align-self: center;
+}
+
+.mini-cart .no-of-items {
+	font-weight: bolder;
+	font-size: 18px;
+	font-style: italic;
+}
+
+.second-section,
+.first-section {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: flex-start;
+}
+
+.first-section {
+	margin-right: 5px;
+}
+
+.mini-cart-price {
+	margin-top: 5px;
+}
+
+.plus-btn,
+.minus-btn {
+	border: 1px solid black;
+	padding: 5px;
+	background-color: transparent;
+	text-align: center;
+	cursor: pointer;
+	width: 2vw;
+}
+
+.plus-btn:hover,
+.minus-btn:hover {
+	box-shadow: 0px 1px 2px 0px black;
+}
+
+
+.mini-cart-quantity {
+	font-weight: bold;
+	align-self: center;
+	font-weight: 500;
+}
+
+/* attributes buttons */
+
+.mini-size-btns {
+	display: flex;
+	flex-direction: column;
+}
+.mini-size-btns * {
+	margin-top: 5px;
+}
+
+.mini-size-btns div button {
+	border: 1px solid gray;
+	text-transform: uppercase;
+	padding: 5px;
+	background-color: black;
+	color: white;
+	font-weight: 400;
+	margin-right: 5px;
+}
+
+.mini-size-btns button.color {
+	padding: 15px;
+}
+
+/* Total */
+.total {
+	display: flex;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.total #total-p {
+	font-family: 'Roboto' , sans-serif;
+	font-weight: 500;
+	line-height: 16px;
+}
+
+.total #total-number {
+	font-weight: 700;
+	line-height: 25.6px;
+}
+
+/* checkout and view bag buttons */
+
+.mini-cart-btns {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+.mini-cart-btns button {
+	border: none;
+	outline: none;
+	background-color: transparent;
+	padding: 10px;
+	margin: 5px;
+	text-transform: uppercase;
+	font-weight: 400;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+.mini-cart-btns .view-bag {
+	border: 1px solid #1D1F22;
+}
+
+.mini-cart-btns .checkout {
+	background-color: green;
+	color: white;
+}
+
+.mini-cart-btns .view-bag:hover,
+.mini-cart-btns .checkout:hover {
+	box-shadow: 0px 0px 2px 0px black;
+}
+
+/* text if cart is empty */
+
+.mini-empty {
+	font-size: 18px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+

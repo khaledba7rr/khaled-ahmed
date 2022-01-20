@@ -1,0 +1,161 @@
+.loading {
+	font-size: 28px;
+	font-weight: bolder;
+	text-transform: uppercase;
+	text-align: center;
+	height: 100%;
+}
+
+.product-details-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 0.5em;
+}
+
+.preview-imgs {
+	flex-basis: 15%;
+	display: flex;
+	flex-direction: column;
+	padding: 0.3em;
+	height: 80vh;
+	overflow-y: visible;
+}
+
+.preview-imgs.scroll {
+	overflow-y: scroll;
+}
+
+.preview-imgs img {
+	margin: 0.2em auto;
+	height: 20vh;
+	cursor: pointer;
+	border: 1px solid black;
+	object-fit: fill;
+}
+
+.preview-imgs img.selected-photo {
+	border: 3px solid green;
+	padding: 2px;
+}
+
+.preview-imgs img.selected-photo:hover {
+	border: 3px solid green;
+	padding: 0;
+}
+
+.preview-imgs img:hover {
+	border: 1px solid #c2c0c0;
+	box-shadow: 0px 1px 2px 0px black;
+}
+
+.main-preview-img {
+	flex-basis: 50%;
+	margin: 0.5em;
+	display: flex;
+	height: 80vh;
+}
+
+.main-preview-img img {
+	margin: 0.2em auto;
+}
+
+.details {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 22%;
+	padding: 18px;
+	margin-left: 5px;
+	height: 80vh;
+	overflow-y: auto;
+}
+
+.details * {
+	margin-bottom: 15px;
+}
+
+.details .brand-name {
+	line-height: 27px;
+	font-weight: 700;
+	font-size: 30px;
+}
+
+.details .product-name {
+	line-height: 27px;
+	font-weight: 400;
+	font-size: 30px;
+}
+
+.details .attributes-container p,
+.price {
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 18px;
+	font-family: "Roboto Condensed";
+}
+
+.details .description {
+	font-family: "Roboto";
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 25.59px;
+}
+
+.attributes-container div div button {
+	padding: 15px;
+	margin-right: 10px;
+	border: 1px solid #1d1f22;
+	background-color: transparent;
+	font-weight: 400;
+	font-family: "Source Sans Pro";
+	line-height: 18px;
+	cursor: pointer;
+}
+
+.attributes-container div div button.selected {
+	color: white;
+	background: #1d1f22;
+	border: 1px solid #1d1f22;
+}
+
+.attributes-container div div button.swatch {
+	padding: 20px;
+}
+
+.attributes-container div div button.swatch.selected {
+	padding: 25px;
+}
+
+.disabled {
+	color: gray;
+}
+
+.attributes-container div div button.swatch.disabled,
+.attributes-container div div button.disabled {
+	cursor: not-allowed;
+	font-weight: bolder;
+}
+
+.details .details-btn button {
+	width: 95%;
+	border: none;
+	padding: 1em;
+	background-color: green;
+	color: white;
+	text-transform: uppercase;
+	font-weight: bold;
+	cursor: pointer;
+	margin-bottom: 5px;
+}
+
+.details .details-btn button:hover,
+.size-buttons button:hover {
+	box-shadow: 0px 2px 4px 0px black;
+}
+
+.details .details-btn button.disabled {
+	color: gray;
+	background-color: transparent;
+	border: 2px solid gray;
+	cursor: not-allowed;
+	box-shadow: none;
+}
