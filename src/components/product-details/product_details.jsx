@@ -122,6 +122,7 @@ class ProductDetails extends Component {
 	};
 
 	changeModalBoolean = () => {
+		console.log('triggered');
 		this.setState((state) => {
 			let data = { ...state.data };
 			data.isOpen = !data.isOpen;

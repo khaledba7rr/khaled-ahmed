@@ -9,7 +9,7 @@ class ModalPage extends Component {
 			<div onClick={this.props.changeModalBoolean} className={`overlay ${isOpen ? "modal-active" : null}`}>
 				<div className="modal">
 					<p className="modal-message">{modalMessage}</p>
-					<button onClick={this.props.changeModalBoolean} className="ok">
+					<button onClick={() => this.props.changeModalBoolean} className="ok">
 						Okay
 					</button>
 				</div>
