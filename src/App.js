@@ -7,7 +7,7 @@ import Navigation from "./components/navigation/navigation";
 import ShoppingCartScreen from "./screens/shopping-cart/shopping-cart-screen";
 import { dropdownClick, miniCartClick } from "./state-management/actions";
 import { withGraphQLData } from "./components/with-data-hoc/with-data";
-import { ALL, errorMessage } from "./components/with-data-hoc/data-constants";
+import { ALL, errorMessage, loadingMessage } from "./components/with-data-hoc/data-constants";
 
 import { Route, Routes, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -29,6 +29,7 @@ const mapDispatchToProps = (dispatch) => {
 class App extends Component {
 	state = {
 		currenctCategory: "all",
+		products : [],
 	};
 
 	handleCategory = (category) => {
@@ -51,7 +52,7 @@ class App extends Component {
 
 		const products = loading ? null : data.category.products;
 
-		if (loading) return errorMessage;
+		if (loading) return loadingMessage;
 
 		if (error || !data) return errorMessage;
 
@@ -73,32 +74,29 @@ class App extends Component {
 					></div>
 					<Routes>
 						<Route
-							path="/"
+							exact path="/"
 							element={
 								<div className="products-container">
-									<ProductCardScreen category={currenctCategory} />
+									<ProductCardScreen getProducts={this.getProducts} category={currenctCategory} products={products} />
 								</div>
 							}
 						/>
 
 						<Route
-							path="/products/:productID"
+							exact path="/products/:productID"
 							element={<ProductDetailScreen />}
 						/>
 
 						<Route
-							path="/cart"
+							exact path="/cart"
 							element={<ShoppingCartScreen products={products} />}
 						/>
 
-						<Route path="/home" element={<Navigate replace to="/" />} />
+						<Route exact path="/home" element={<Navigate replace to="/" />} />
 					</Routes>
 				</div>
 			</div>
 		);
 	}
 }
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(withGraphQLData(App, ALL));
+export default connect(mapStateToProps,mapDispatchToProps)(withGraphQLData(App, ALL));

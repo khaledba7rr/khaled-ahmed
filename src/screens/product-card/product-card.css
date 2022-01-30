@@ -3,15 +3,16 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 0.5em;
+	justify-content: center;
 }
 
 .card {
 	cursor: pointer;
-	padding: 16px auto;
-	margin: 10px auto;
-	flex-basis: 27%;
+	padding: 16px;
+	margin: auto;
+	flex-basis: 28%;
 	position: relative;
-	height: 55vh;
+	height: 57vh;
 }
 
 .card:hover {
@@ -24,21 +25,25 @@
 }
 
 .card.out-of-stock .out-span {
-	font-size: 36px;
+	font-size: 24px;
+	font-family: "Raleway";
+	font-weight: 400;
 	text-transform: uppercase;
 	text-shadow: black;
 	position: absolute;
 	top: 40%;
-	left: 15%;
+	left: 25%;
 }
 
 .card-img {
-	height: 70%;
+	height: 75%;
 }
 
 .card-img img {
-	height: 100%;
-	object-fit: fill;
+	width: 100%;
+	max-height: 100%;
+	object-fit: cover;
+	object-position: top;
 }
 
 .product-details {
@@ -50,13 +55,18 @@
 .product-details .product-name {
 	font-size: 18px;
 	text-align: start;
+    font-family: 'Raleway', sans-serif;
 	font-weight: 300;
+	color: #1D1F22;
+	line-height: 28.8px;
 }
 
 .product-details .product-price {
 	font-size: 18px;
 	text-align: start;
-	font-weight: 500;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 600;
+	color: #1D1F22;
 }
 
 /* add to cart button */
@@ -64,11 +74,11 @@
 .add-to-cart {
 	display: none;
 	border-radius: 50%;
-	padding: 10px;
+	padding: 6px;
 	position: absolute;
-	bottom: 25%;
-	right: 10%;
-	background-color: green;
+	bottom: 22%;
+	right: 8%;
+	background-color: #5ECE7B;
 	border: none;
 	outline: none;
 }
@@ -78,8 +88,9 @@
 }
 
 .add-to-cart:hover {
-	box-shadow: 0px 0px 6px 0px black;
 	cursor: pointer;
+	padding: 8px;
+	box-shadow: 0px 0px 2px 0px black;
 }
 
 .link {
@@ -92,4 +103,13 @@
 	text-decoration: none;
 }
 
-
+.category-name {
+	display: flex;
+	width: 100%;
+    font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 32px;
+	margin-left: 40px;
+	margin-bottom: 40px;
+	text-transform: capitalize;
+}

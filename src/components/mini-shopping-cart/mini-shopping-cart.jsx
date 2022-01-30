@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
 
 class MiniShoppingCart extends Component {
 
-	renderCartProducts = (cartProducts, products) => {
+	renderCartProducts = (cartProducts,products) => {
 		return cartProducts.map((cartItem, index) => (
 			<React.Fragment key={index}>
 				<div className="mini-cart-items">
@@ -34,7 +34,6 @@ class MiniShoppingCart extends Component {
 						productID={cartItem.id}
 						quantity={cartItem.quantity}
 						attributes={cartItem.attributes}
-						getProducts={this.getProducts}
 						products={products}
 					/>
 				</div>
@@ -95,13 +94,13 @@ class MiniShoppingCart extends Component {
 						) : (
 							<React.Fragment>
 								{/* MiniCart info */}
-								<p>
+								<p className="my-bag">
 									My Bag.{" "}
 									<span className="no-of-items">{numberOfCartItems} items</span>
 								</p>
 
 								{/* MiniCart product item */}
-								{this.renderCartProducts(cartProducts, products)}
+								{this.renderCartProducts(cartProducts,products)}
 
 								{/* MiniCart bottom section (check out & View bag & total) */}
 								<div className="total">

@@ -2,8 +2,15 @@ import React, { Component } from "react";
 
 import cart from ".//cart-icon.png";
 
-import { changeQuantity, addItem, clearCart } from "../../state-management/actions";
-import { quantityIncMessage, addToCartMessage } from "../with-data-hoc/data-constants";
+import {
+	changeQuantity,
+	addItem,
+	clearCart,
+} from "../../state-management/actions";
+import {
+	quantityIncMessage,
+	addToCartMessage,
+} from "../with-data-hoc/data-constants";
 import ModalPage from "../modal-page/modal-page";
 import ProductModal from "../modal-page/product-modal";
 
@@ -95,7 +102,7 @@ class ProductCard extends Component {
 				return { data };
 			}
 		});
-	}
+	};
 
 	render() {
 		const { name, url, price, id, brand, inStock, attributes } = this.props;
@@ -104,9 +111,9 @@ class ProductCard extends Component {
 				<div className={`card ${this.props.inStock ? null : "out-of-stock"}`}>
 					{inStock ? null : <span className="out-span">out of stock</span>}
 					<Link className="link" to={`products/${id}`}>
-
+						
 						<div className="card-img">
-							<img width="100%" alt={name} src={url} />
+							<img alt={name} src={url} />
 						</div>
 
 						<div className="product-details">
@@ -117,12 +124,11 @@ class ProductCard extends Component {
 								{price.currency.symbol + price.amount}
 							</p>
 						</div>
-						
 					</Link>
 
 					{inStock ? (
 						<button onClick={() => this.addToCart(id)} className="add-to-cart">
-							<img width="100%" src={cart} alt="cart button" />
+							<img  src={cart} alt="cart" />
 						</button>
 					) : null}
 				</div>
@@ -137,7 +143,7 @@ class ProductCard extends Component {
 				<ModalPage
 					changeModalBoolean={this.changeModalBoolean}
 					modalMessage={this.state.data.modalMessage}
-					isOpen={this.state.data.isOpen}	
+					isOpen={this.state.data.isOpen}
 				/>
 			</React.Fragment>
 		);

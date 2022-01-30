@@ -9,6 +9,7 @@ import { withGraphQLData } from "../../components/with-data-hoc/with-data";
 import { errorMessage, loadingMessage, PRODUCT_DETAIL } from "../../components/with-data-hoc/data-constants";
 
 class ProductDetailScreen extends Component {
+
 	render() {
 		const {loading, error} = this.props;
 		const product = loading ? [] : this.props.data.product;

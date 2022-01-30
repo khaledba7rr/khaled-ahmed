@@ -6,7 +6,7 @@ import {
     DETAILS_DATA, PRODUCT_DETAIL,
     CURRENCIES_DATA, CURRENCIES,
     CATEGORIES_NAMES, CATEGORIES,
-    ALL_DATA, ALL,
+    ALL_DATA, ALL, 
  } from "./data-constants";
 
 export const withGraphQLData = (Component, dataType) => (props) => {
@@ -35,7 +35,6 @@ export const withGraphQLData = (Component, dataType) => (props) => {
     if(dataType === ALL){
         ({loading, data, error} = useQuery(ALL_DATA));
     }
-
 	return <Component {...props} loading={loading} data={data} error={error}/>;
 
 };

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 import "./product-card.css";
 
-import { withGraphQLData } from "../../components/with-data-hoc/with-data";
-import { PRODUCTS, errorMessage, loadingMessage } from "../../components/with-data-hoc/data-constants";
 import ProductCard from "../../components/product-card/product-card";
 
 import { connect } from "react-redux";
@@ -15,7 +13,6 @@ const mapStateToProps = (state) => {
 };
 
 class ProductCardScreen extends Component {
-	
 	renderProducts = (products, currentCurrency) => {
 		return products.map((product, index) => {
 			return (
@@ -37,23 +34,24 @@ class ProductCardScreen extends Component {
 			);
 		});
 	};
-
+	
 	render() {
-		const {loading, error} = this.props;
-		const products = loading ? [] : this.props.data.category.products;
+		const { category, products } = this.props;
 
-		if (loading) return loadingMessage;
+		let filterdProd =
+			category === "all"
+				? products
+				: products.filter((product) => product.category === category);
 
-		if (error || !products) return errorMessage;
-
-		if (products.length === 0)
+		if (filterdProd.length === 0)
 			return <div className="loading"> Oops ! looks like store is empty !</div>;
 
 		return (
 			<React.Fragment>
-				{this.renderProducts(products, this.props.currentCurrency)}
+				<h1 className="category-name">{category} Category</h1>
+				{this.renderProducts(filterdProd, this.props.currentCurrency)}
 			</React.Fragment>
 		);
 	}
 }
-export default connect(mapStateToProps)(withGraphQLData(ProductCardScreen,PRODUCTS));
+export default connect(mapStateToProps)(ProductCardScreen);

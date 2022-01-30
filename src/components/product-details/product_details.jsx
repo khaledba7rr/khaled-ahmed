@@ -40,7 +40,7 @@ class ProductDetails extends Component {
 		const product = this.props.cartProducts.filter((item) => item.id === id);
 		const attributes = Object.entries(this.state).filter(([key]) => key !== "data");
 
-		if (Object.keys(this.state).length === 1) {
+		if (Object.keys(this.state).length === 1 && this.state.data.attributesLength > 0 ) {
 			data.modalMessage = "Please, select product attributes";
 			this.setState({ data });
 			return;
@@ -122,7 +122,6 @@ class ProductDetails extends Component {
 	};
 
 	changeModalBoolean = () => {
-		console.log('triggered');
 		this.setState((state) => {
 			let data = { ...state.data };
 			data.isOpen = !data.isOpen;

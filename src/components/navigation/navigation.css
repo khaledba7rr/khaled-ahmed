@@ -1,12 +1,12 @@
 /* navigation container */
 
 .nav-container {
+    padding-right: 4%;
+    padding-left: 4%;
+    padding-top: 1%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 4px 8px 0px rgba(0,0,0,0.2);
-    padding-right: 2%;
-    padding-left: 2%;
     position: relative;
     z-index: 22;
     background-color: white;
@@ -23,13 +23,13 @@
     padding: 10px;
     padding-bottom: 16px;
     cursor: pointer;
-    font-weight: 600;
     font-size: 16px;
+    font-family: 'Raleway', sans-serif;
 }
 
 .nav ul li.selected{
-    color : green;
-    border-bottom: 2px solid green;
+    color : #5ECE7B;
+    border-bottom: 2px solid #5ECE7B;
     transition: all 0.3s ease-in-out;
 }
 
@@ -38,6 +38,10 @@
 .logo img {
     height: 60px;
     width: 60px;
+    position: absolute;
+    padding: 5px;
+    top: 0;
+    left: 50%;
 }
 
 /* dropdown & cart  icons */
@@ -47,6 +51,7 @@
     padding: 1em;
     position: relative;
 }
+
 .icons p {
     margin-right: 5px;
 }
@@ -55,15 +60,18 @@
     cursor: pointer;
     font-weight: 500;
     font-size: 18px;
+    font-family: 'Raleway', sans-serif;
 }
-
-
 
 @media screen and (max-width: 600px) {
     
     .logo img {
         height: 40px;
         width: 40px;
+        position: absolute;
+        padding: 5px;
+        top: 5px;
+        left: 50%;
     }
 
     .nav ul li{

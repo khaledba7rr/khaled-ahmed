@@ -42,8 +42,6 @@ class CartImage extends Component {
 			<div className={`${isMini ? "mini-cart-image" : "main-cart-image"}`}>
 				<img
 					alt="product"
-					width="100%"
-					height="100%"
 					src={
 						isMini
 							? product.gallery[0]

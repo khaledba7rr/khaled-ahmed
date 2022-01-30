@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+
 import CartDetails from "./cart-details";
 import CartImage from "./cart-image";
 
 
 class ShoppingCart extends Component {
+
 	render() {
-		const {products,productID} = this.props;
+		const {products, productID} = this.props;
 		const product = products.filter(product => product.id === productID)[0];
 
 		return (

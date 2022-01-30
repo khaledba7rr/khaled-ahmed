@@ -13,7 +13,6 @@ class ProductImages extends Component {
 	renderImages = (product) => {
 		return product.gallery.map((photo, index) => (
 			<img
-				width="95%"
 				key={index}
 				className={`${
 					this.state.currentPhotoIndex === index ? "selected-photo" : null
@@ -35,7 +34,6 @@ class ProductImages extends Component {
 
 				<div className="main-preview-img">
 					<img
-						width="100%"
 						src={product.gallery[this.state.currentPhotoIndex]}
 						alt={"product photo " + this.state.currentPhotoIndex}
 					/>
