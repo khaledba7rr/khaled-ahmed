@@ -34,7 +34,7 @@ class ProductCardScreen extends Component {
 			);
 		});
 	};
-	
+
 	render() {
 		const { category, products } = this.props;
 

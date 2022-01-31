@@ -111,7 +111,6 @@ class ProductCard extends Component {
 				<div className={`card ${this.props.inStock ? null : "out-of-stock"}`}>
 					{inStock ? null : <span className="out-span">out of stock</span>}
 					<Link className="link" to={`products/${id}`}>
-						
 						<div className="card-img">
 							<img alt={name} src={url} />
 						</div>
@@ -128,7 +127,7 @@ class ProductCard extends Component {
 
 					{inStock ? (
 						<button onClick={() => this.addToCart(id)} className="add-to-cart">
-							<img  src={cart} alt="cart" />
+							<img width="100%" src={cart} alt="cart" />
 						</button>
 					) : null}
 				</div>
