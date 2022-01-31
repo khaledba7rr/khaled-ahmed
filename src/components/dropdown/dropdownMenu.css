@@ -15,9 +15,9 @@
     display: none;
     position: absolute;
     background-color: #fff;
-    z-index: 1;
     right: 0px;
-    top: 200%;
+    bottom: -1000%;
+    margin-top: 50%;
 }
 
 .dropdown-content.active {

@@ -7,9 +7,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
     z-index: 22;
     background-color: white;
+    position: relative;
 }
 
 .nav ul {
