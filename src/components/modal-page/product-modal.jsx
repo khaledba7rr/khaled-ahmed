@@ -72,6 +72,10 @@ class ProductModal extends Component {
 		}
 	};
 
+	confirmClass = () => {
+		return this.allAttributesSelected() === true ? 'confirm' : null;
+	}
+
 	render() {
 		let { selectAttributes } = this.props;
 		return (
@@ -85,8 +89,9 @@ class ProductModal extends Component {
 						product={this.props.product}
 						updateState={this.setAttribute}
 					/>
-					<button className="confirm-btn" onClick={this.addOrIncreaseCart}>
+					<button className={`confirm-btn ${this.confirmClass()}`} disabled={!this.allAttributesSelected()} onClick={this.addOrIncreaseCart}>
 						confirm
+						<div className={`btn-bg ${this.confirmClass()}`} ></div>
 					</button>
 					<button onClick={this.props.changeModalBoolean} className="close-btn">
 						x

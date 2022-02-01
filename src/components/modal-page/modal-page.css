@@ -75,7 +75,7 @@
 }
 
 .attribute-error {
-	font-family: 'Roboto';
+	font-family: 'Roboto-condensed', 'sans-serif';
 	font-weight: 700;
 	color: red;
 	font-size: 20px;
@@ -85,15 +85,38 @@
 	padding: 10px;
 	border: none;
 	outline: none;
-	background-color: #5ECE7B;
-	color: #fff;
+	background-color: transparent;
 	text-transform: uppercase;
 	font-weight: 500;
 	cursor: pointer;
+	position: relative;
+	border: 1px solid rgba(0,0,0,0.3);
+	color: rgba(0,0,0,0.3);
+}
+
+.confirm-btn.confirm{
+	color: #f1f1f1;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+}
+
+.confirm-btn .btn-bg {
+	position: absolute;
+	height: 100%;
+	width: 0%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background-color: #5ECE7B;
+}
+
+.btn-bg.confirm {
+	width: 100%;
+	transition: width 0.3s ease-in;
 }
 
 .confirm-btn:hover {
-	box-shadow: 0px 0px 5px 0px black;
+	box-shadow: 0px 0px 2px 0px black;
 }
 
 .close-btn {
