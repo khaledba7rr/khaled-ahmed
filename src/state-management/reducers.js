@@ -5,6 +5,7 @@ import {
 	CLEAR_CART,
 	DROPDOWN_CLICK,
 	MINICART_CLICK,
+	DATA
 } from "./constants";
 
 const initialCurrencyState = {
@@ -82,3 +83,21 @@ export const handleClicks = (state = initialClickState, action = {}) => {
 			return state;
 	}
 };
+
+const initialProducts = {
+	products : [],
+	loading : true,
+	error : false,
+}
+
+export const fetchData = (state = initialProducts , action = {}) => {
+	switch(action.type){
+		
+		case DATA :
+			const {products,loading,error} = action.payload;
+			return {...state, products, loading, error};
+
+		default :
+		return state;
+	}
+}

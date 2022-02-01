@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
 	return {
 		currentCurrency: state.setCurrentCurrency.currentCurrency,
 		cartProducts: state.addCartItem.cartProducts,
+		fetchData: state.fetchData,
 	};
 };
 
@@ -31,7 +32,8 @@ class ShoppingCartScreen extends Component {
 	};
 
 	render() {
-		const { cartProducts, products } = this.props;
+		const { cartProducts} = this.props;
+		const { products } = this.props.fetchData;
 
 		if (cartProducts.length === 0)
 			return <div className="loading"> Your cart is empty ...</div>;

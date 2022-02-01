@@ -77,7 +77,7 @@ class Navigation extends Component {
 					<div className="icons">
 						<p className="currency" onClick={this.props.handleDropdown}>{currentCurrency}</p>
 						<DropdownMenu />
-						<MiniShoppingCart products={this.props.products} />
+						<MiniShoppingCart />
 					</div>
 					
 				</div> );

@@ -4,7 +4,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { setCurrentCurrency, addCartItem , handleClicks} from "./state-management/reducers";
+import { setCurrentCurrency, addCartItem , handleClicks, fetchData} from "./state-management/reducers";
 
 //apollo
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -34,7 +34,7 @@ const persistConfig = {
 };
 
 const logger = createLogger();
-const rootReducers = combineReducers({ setCurrentCurrency, addCartItem , handleClicks });
+const rootReducers = combineReducers({ setCurrentCurrency, addCartItem , handleClicks, fetchData });
 const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const store = createStore(persistedReducer, applyMiddleware(logger));

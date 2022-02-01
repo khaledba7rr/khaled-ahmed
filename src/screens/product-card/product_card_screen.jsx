@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 const mapStateToProps = (state) => {
 	return {
 		currentCurrency: state.setCurrentCurrency.currentCurrency,
+		fetchData: state.fetchData,
 	};
 };
 
@@ -36,7 +37,8 @@ class ProductCardScreen extends Component {
 	};
 
 	render() {
-		const { category, products } = this.props;
+		const {category} = this.props;
+		const {products} = this.props.fetchData;
 
 		let filterdProd =
 			category === "all"

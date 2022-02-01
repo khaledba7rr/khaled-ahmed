@@ -9,3 +9,5 @@ export const CLEAR_CART = "CLEAR_CART";
 export const DROPDOWN_CLICK = "DROPDOWN_CLICK";
 
 export const MINICART_CLICK = "MINICART_CLICK";
+
+export const DATA = "PRODUCTS_DATA";

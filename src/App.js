@@ -5,9 +5,8 @@ import ProductDetailScreen from "./screens/product-details/product_detail_screen
 import ProductCardScreen from "./screens/product-card/product_card_screen";
 import Navigation from "./components/navigation/navigation";
 import ShoppingCartScreen from "./screens/shopping-cart/shopping-cart-screen";
-import { dropdownClick, miniCartClick } from "./state-management/actions";
-import { withGraphQLData } from "./components/with-data-hoc/with-data";
-import { ALL, errorMessage, loadingMessage } from "./components/with-data-hoc/data-constants";
+import {dropdownClick,miniCartClick,fetchData,} from "./state-management/actions";
+import {ALL_DATA,errorMessage,loadingMessage,} from "./components/with-data-hoc/data-constants";
 
 import { Route, Routes, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
@@ -16,6 +15,7 @@ const mapStateToProps = (state) => {
 	return {
 		isDropdownOpen: state.handleClicks.isDropdownOpen,
 		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
+		fetchData: state.fetchData,
 	};
 };
 
@@ -23,13 +23,13 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		handleMiniCart: () => dispatch(miniCartClick()),
 		handleDropdown: () => dispatch(dropdownClick()),
+		fetchProducts: (data) => dispatch(fetchData(data)),
 	};
 };
 
 class App extends Component {
 	state = {
 		currenctCategory: "all",
-		products : [],
 	};
 
 	handleCategory = (category) => {
@@ -38,31 +38,41 @@ class App extends Component {
 		});
 	};
 
+	componentDidMount() {
+		this.fetchProducts();
+	}
+
+	fetchProducts = async () => {
+		try {
+			const data = await this.props.client.query({
+				query: ALL_DATA,
+			});
+			this.props.fetchProducts({
+				products: data.data.category.products,
+				loading: data.loading,
+				error: false,
+			});
+		} catch (error) {
+			this.props.fetchProducts({
+				products: [],
+				loading: false,
+				error: true,
+			});
+		}
+	};
+
 	render() {
 		const { currenctCategory } = this.state;
-		const {
-			isMiniCartOpen,
-			isDropdownOpen,
-			handleDropdown,
-			handleMiniCart,
-			data,
-			loading,
-			error,
-		} = this.props;
-
-		const products = loading ? null : data.category.products;
+		const { isMiniCartOpen, isDropdownOpen, handleDropdown, handleMiniCart } = this.props;
+		const {loading, error } = this.props.fetchData;
 
 		if (loading) return loadingMessage;
 
-		if (error || !data) return errorMessage;
+		if (error) return errorMessage;
 
 		return (
 			<div className="App">
-				<Navigation
-					onClick={this.handleCategory}
-					category={currenctCategory}
-					products={products}
-				/>
+				<Navigation onClick={this.handleCategory} category={currenctCategory} />
 				<div className="content-container">
 					<div
 						className={`cart-overlay ${isMiniCartOpen ? "active" : null}`}
@@ -74,29 +84,33 @@ class App extends Component {
 					></div>
 					<Routes>
 						<Route
-							exact path="/"
+							exact
+							path="/"
 							element={
 								<div className="products-container">
-									<ProductCardScreen getProducts={this.getProducts} category={currenctCategory} products={products} />
+									<ProductCardScreen category={currenctCategory} />
 								</div>
 							}
 						/>
 
 						<Route
-							exact path="/products/:productID"
+							exact
+							path="/products/:productID"
 							element={<ProductDetailScreen />}
 						/>
 
 						<Route
-							exact path="/cart"
-							element={<ShoppingCartScreen products={products} />}
+							exact
+							path="/cart"
+							element={<ShoppingCartScreen />}
 						/>
 
 						<Route exact path="/home" element={<Navigate replace to="/" />} />
+
 					</Routes>
 				</div>
 			</div>
 		);
 	}
 }
-export default connect(mapStateToProps,mapDispatchToProps)(withGraphQLData(App, ALL));
+export default connect(mapStateToProps, mapDispatchToProps)(App);

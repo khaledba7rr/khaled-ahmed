@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 		currentCurrency: state.setCurrentCurrency.currentCurrency,
 		cartProducts: state.addCartItem.cartProducts,
 		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
+		fetchData: state.fetchData,
 	};
 };
 
@@ -71,7 +72,8 @@ class MiniShoppingCart extends Component {
 	};
 
 	render() {
-		const { cartProducts, handleMiniCart, isMiniCartOpen, products } = this.props;
+		const { cartProducts, handleMiniCart, isMiniCartOpen } = this.props;
+		const products = this.props.fetchData.products;
 		const numberOfCartItems = this.numberOfCartItems();
 		const cartTotal = this.cartTotalPrice(products);
 

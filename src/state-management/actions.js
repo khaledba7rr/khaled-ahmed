@@ -5,6 +5,7 @@ import {
 	CLEAR_CART,
 	DROPDOWN_CLICK,
 	MINICART_CLICK,
+	DATA,
 } from "./constants";
 
 export const setCurrency = (text) => ({
@@ -32,4 +33,9 @@ export const dropdownClick = () => ({
 
 export const miniCartClick = () => ({
 	type: MINICART_CLICK,
+});
+
+export const fetchData = (data) => ({
+	type : DATA,
+	payload : data,
 });
