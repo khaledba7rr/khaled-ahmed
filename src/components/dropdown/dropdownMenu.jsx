@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 };
 
 class DropdownMenu extends Component {
-	
+
 	renderCurrencies = (currencies) => {
 		return currencies.map((currency, i) => {
 			return (
@@ -50,10 +50,10 @@ class DropdownMenu extends Component {
 	};
 
 	render() {
-		const { loading, error } = this.props;
+		const { loading , error, isDropdownOpen, handleDropdown } = this.props;
 		const { currencies } = loading ? [] : this.props.data;
-		const { isDropdownOpen, handleDropdown } = this.props;
 
+		
 		if (loading) return loadingMessage;
 
 		if (error || !currencies) return errorMessage;

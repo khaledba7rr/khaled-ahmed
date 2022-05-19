@@ -50,8 +50,8 @@ class Navigation extends Component {
 					{category.name}
 				</li>
 			</Link>
-		))
-	}
+		));
+	};
 
 	render() {
 		const { currentCurrency, error, loading } = this.props;

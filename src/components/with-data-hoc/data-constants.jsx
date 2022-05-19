@@ -1,5 +1,7 @@
 import { gql } from "@apollo/client";
 
+import React from "react";
+
 export const PRODUCTS = "PRODUCTS";
 
 export const PRODUCT_DETAIL = "PRODUCT_DETAIL";

@@ -1,5 +1,7 @@
+/* eslint-disable react/display-name */
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
+import React from "react";
 
 import { 
     PRODUCTS_DATA , PRODUCTS,
@@ -9,7 +11,6 @@ import {
  } from "./data-constants";
 
 export const withGraphQLData = (Component, dataType) => (props) => {
-    
 	let loading, data, error;
 
     if(dataType === PRODUCTS){

@@ -24,11 +24,11 @@ class CartImage extends Component {
 		} else {
 			return (
 				<div className="images-route">
-					<button onClick={() => this.changePhoto("left")}>{`<`}</button>
+					<button onClick={() => this.changePhoto("left")}>{"<"}</button>
 					<button
 						onClick={() => this.changePhoto("right", product.gallery.length)}
 					>
-						{`>`}
+						{">"}
 					</button>
 				</div>
 			);
@@ -36,8 +36,7 @@ class CartImage extends Component {
 	};
 
 	render() {
-		const { product } = this.props;
-		const { isMini } = this.props;
+		const { product, isMini } = this.props;
 		return (
 			<div className={`${isMini ? "mini-cart-image" : "main-cart-image"}`}>
 				<img

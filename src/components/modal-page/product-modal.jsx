@@ -74,7 +74,7 @@ class ProductModal extends Component {
 
 	confirmClass = () => {
 		return this.allAttributesSelected() === true ? 'confirm' : null;
-	}
+	};
 
 	render() {
 		let { selectAttributes } = this.props;

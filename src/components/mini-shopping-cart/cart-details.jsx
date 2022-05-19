@@ -43,7 +43,7 @@ class CartDetails extends Component {
 		return this.props.product.prices.filter(
 			(priceItem) => priceItem.currency.symbol === this.props.currentCurrency
 		)[0];
-	}
+	};
 
 	render() {
 		const { product, isMini } = this.props;

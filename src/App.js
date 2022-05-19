@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-
 import ProductDetailScreen from "./screens/product-details/product_detail_screen";
 import ProductCardScreen from "./screens/product-card/product_card_screen";
 import Navigation from "./components/navigation/navigation";
@@ -15,7 +14,7 @@ const mapStateToProps = (state) => {
 	return {
 		isDropdownOpen: state.handleClicks.isDropdownOpen,
 		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
-		fetchData: state.fetchData,
+		fetchData: state.fetchData
 	};
 };
 
