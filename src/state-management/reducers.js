@@ -5,6 +5,7 @@ import {
 	CLEAR_CART,
 	DROPDOWN_CLICK,
 	MINICART_CLICK,
+	FILTER_CLICK,
 	DATA
 } from "./constants";
 
@@ -69,6 +70,7 @@ export const addCartItem = (state = initialCartState, action = {}) => {
 const initialClickState = {
 	isDropdownOpen: false,
 	isMiniCartOpen: false,
+	isFilterOpen : false,
 };
 
 export const handleClicks = (state = initialClickState, action = {}) => {
@@ -80,6 +82,10 @@ export const handleClicks = (state = initialClickState, action = {}) => {
 	case MINICART_CLICK: {
 		const isMiniCartOpen = state.isMiniCartOpen;
 		return { ...state, isMiniCartOpen: !isMiniCartOpen };
+	}
+	case FILTER_CLICK : {
+		const isFilterOpen = state.isFilterOpen;
+		return {...state, isFilterOpen : !isFilterOpen};
 	}
 	default:
 		return state;

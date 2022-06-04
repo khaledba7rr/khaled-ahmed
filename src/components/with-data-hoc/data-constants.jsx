@@ -128,3 +128,5 @@ export const addToCartMessage = "Added to cart !";
 export const quantityIncMessage = "Quantity increased !";
 
 export const sortObject = (obj) => Object.keys(obj).sort().reduce((prev, curr) => ((prev[curr] = obj[curr]), prev), {});
+
+export const isEqual = (a, b) => (JSON.stringify(a) === JSON.stringify(b));

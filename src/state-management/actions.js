@@ -5,6 +5,7 @@ import {
 	CLEAR_CART,
 	DROPDOWN_CLICK,
 	MINICART_CLICK,
+	FILTER_CLICK,
 	DATA,
 } from "./constants";
 
@@ -38,4 +39,8 @@ export const miniCartClick = () => ({
 export const fetchData = (data) => ({
 	type : DATA,
 	payload : data,
+});
+
+export const filterClick =() => ({
+	type : FILTER_CLICK,
 });

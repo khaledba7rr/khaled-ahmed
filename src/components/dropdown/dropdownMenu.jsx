@@ -4,7 +4,7 @@ import caretDown from "./caret-down.png";
 import caretUp from "./caret-up.png";
 import "./dropdownMenu.css";
 
-import {dropdownClick, setCurrency, miniCartClick} from "../../state-management/actions";
+import {dropdownClick, setCurrency, miniCartClick,filterClick} from "../../state-management/actions";
 import { withGraphQLData } from "../with-data-hoc/with-data";
 import { CURRENCIES, errorMessage, loadingMessage } from "../with-data-hoc/data-constants";
 
@@ -12,6 +12,7 @@ import { connect } from "react-redux";
 
 const mapDispatchToProps = (dispatch) => {
 	return {
+		filterClick : () => dispatch(filterClick()),
 		changeCurrecy: (text) => dispatch(setCurrency(text)),
 		handleMiniCart: () => dispatch(miniCartClick()),
 		handleDropdown: () => dispatch(dropdownClick()),
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
+		isFilterOpen : state.handleClicks.isFilterOpen,
 		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
 		isDropdownOpen: state.handleClicks.isDropdownOpen,
 	};
@@ -46,6 +48,9 @@ class DropdownMenu extends Component {
 	miniCartClose = () => {
 		if (this.props.isMiniCartOpen) {
 			this.props.handleMiniCart();
+		}
+		if (this.props.isFilterOpen){
+			this.props.filterClick();
 		}
 	};
 

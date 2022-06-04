@@ -3,24 +3,28 @@ import React, { Component } from "react";
 import "./mini-shopping-cart.css";
 import ShoppingCart from "./shopping-cart";
 import cart from "./shopping-cart.png";
-import { clearCart, miniCartClick } from "../../state-management/actions";
+import { clearCart, miniCartClick, filterClick, dropdownClick} from "../../state-management/actions";
 
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
 	return {
+		isFilterOpen : state.handleClicks.isFilterOpen,
+		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
+		isDropdownOpen : state.handleClicks.isDropdownOpen,
 		currentCurrency: state.setCurrentCurrency.currentCurrency,
 		cartProducts: state.addCartItem.cartProducts,
-		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
 		fetchData: state.fetchData,
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		clearCart: () => dispatch(clearCart()),
+		filterClick: () => dispatch(filterClick()),
 		handleMiniCart: () => dispatch(miniCartClick()),
+		handleDropdown: () => dispatch(dropdownClick()),
+		clearCart: () => dispatch(clearCart()),
 	};
 };
 
@@ -43,9 +47,13 @@ class MiniShoppingCart extends Component {
 		));
 	};
 
-	dropdownClose = () => {
-		if (this.props.isDropdownOpen) {
+	handleClicks = () => {
+		this.props.handleMiniCart();
+		if (this.props.isDropdownOpen){
 			this.props.handleDropdown();
+		}
+		if(this.props.isFilterOpen){
+			this.props.filterClick();
 		}
 	};
 
@@ -72,17 +80,16 @@ class MiniShoppingCart extends Component {
 	};
 
 	render() {
-		const { cartProducts, handleMiniCart, isMiniCartOpen } = this.props;
+		const { cartProducts, isMiniCartOpen,} = this.props;
 		const products = this.props.fetchData.products;
 		const numberOfCartItems = this.numberOfCartItems();
 		const cartTotal = this.cartTotalPrice(products);
 
 		return (
 			<React.Fragment>
-				<div className="nav-shopping-cart">
+				<div onClick={() => this.handleClicks()} className="nav-shopping-cart">
 					{/* MiniCart icon */}
 					<button
-						onClick={() => { handleMiniCart(); this.dropdownClose(); }}
 						className="nav-cart-btn"
 					>
 						<img className="img" src={cart} alt="cart" height="20vh" />
@@ -113,7 +120,7 @@ class MiniShoppingCart extends Component {
 								</div>
 								<div className="mini-cart-btns">
 									<Link className="link" to="/cart">
-										<button onClick={handleMiniCart} className="view-bag">
+										<button onClick={()=> this.handleClicks()} className="view-bag">
 											view bag
 										</button>
 									</Link>

@@ -11,3 +11,5 @@ export const DROPDOWN_CLICK = "DROPDOWN_CLICK";
 export const MINICART_CLICK = "MINICART_CLICK";
 
 export const DATA = "PRODUCTS_DATA";
+
+export const FILTER_CLICK = "FILTER_CLICK";

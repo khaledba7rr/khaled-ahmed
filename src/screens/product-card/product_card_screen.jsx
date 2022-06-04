@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./product-card.css";
 
 import ProductCard from "../../components/product-card/product-card";
+import Filter from "../../components/filter/filter";
 
 import { connect } from "react-redux";
 
@@ -39,19 +40,35 @@ class ProductCardScreen extends Component {
 	render() {
 		const {category} = this.props;
 		const {products} = this.props.fetchData;
+		const params = new URLSearchParams(location.search);
 
-		let filterdProd =
+		let isSearchEmpty = location.search.toString() === '';
+
+		let categorizedProducts =
 			category === "all"
 				? products
 				: products.filter((product) => product.category === category);
 
-		if (filterdProd.length === 0)
+		let filteredProducts = [];
+
+		products.map(product => params.forEach((parValue,parKey) => {
+			product.attributes.map(attribute => {
+				if(attribute.name === parKey.replaceAll('-',' ') && (attribute.items.some(item => item.value === parValue))){
+					if(!JSON.stringify(filteredProducts).includes(product.id)){
+						filteredProducts.push(product);
+					}
+				}
+			});
+		}));
+		
+		if (categorizedProducts.length === 0)
 			return <div className="loading"> Oops ! looks like store is empty !</div>;
 
 		return (
 			<React.Fragment>
-				<h1 className="category-name">{category} Category</h1>
-				{this.renderProducts(filterdProd, this.props.currentCurrency)}
+				<h1 className="category-name">{isSearchEmpty ?`${category} Category` : 'Filtered products'}</h1>
+				<Filter products={categorizedProducts} />
+				{this.renderProducts(isSearchEmpty ? categorizedProducts : filteredProducts, this.props.currentCurrency)}
 			</React.Fragment>
 		);
 	}
