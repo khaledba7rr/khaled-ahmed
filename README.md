@@ -1,4 +1,4 @@
-# You should run the backend server befor run this react app 
+# You should run the backend server before running this react app 
 the server is provided through this link : https://github.com/scandiweb/junior-react-endpoint
 
 # Getting Started with Create React App
