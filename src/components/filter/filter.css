@@ -1,6 +1,6 @@
 .filter-button {
     position: fixed;
-    left: -0.5%;
+    left: 0%;
     top: 50%;
     cursor: pointer;
     border: 1px solid black;
@@ -22,7 +22,8 @@
 .filter-container {
     background-color: #5ECE7B;
     position: fixed;
-    left: 0;
+    left: 0%;
+    top: 15%;
     min-height: 75vh;
     min-width: 10vw;
     z-index: 20;

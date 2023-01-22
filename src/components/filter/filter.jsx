@@ -61,7 +61,7 @@ class Filter extends Component {
                         );
                     }else if(value.includes('Yes' || 'No')){
                         return (
-                        <div className={'checkboxes'}>
+                        <div key={key} className={'checkboxes'}>
                             <p>{key}</p>
                                 {value.map((filter,index) => {
                                     return (<div className='radio-fragment' key={filter+index}>
@@ -72,7 +72,7 @@ class Filter extends Component {
                         </div>);
                     }else {
                         return(
-                        <div className={key}>
+                        <div className={key} key={key}>
                             <p>{key}</p>
                             <select defaultValue={'select'} >
                                 <option onClick={()=> this.setSelectedFilter(key,'none')}>select</option>
@@ -109,7 +109,8 @@ class Filter extends Component {
             this.props.filterClick();
         });
         location.search = params.toString();
-        }else if(type === 'clear'){
+        }
+        if(type === 'clear'){
             paramKeys.map(key => params.delete(key));
             location.search = params.toString();
             this.props.filterClick();
@@ -119,7 +120,6 @@ class Filter extends Component {
     render(){
         const {products} = this.props;
         let previousAttributes = {};
-        console.log(this.state.selectedFilters);
         return (
             this.props.isFilterOpen ? 
             <div className="filter-container">

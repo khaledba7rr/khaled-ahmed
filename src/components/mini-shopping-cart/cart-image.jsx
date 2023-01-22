@@ -7,24 +7,30 @@ class CartImage extends Component {
 
 	changePhoto = (order, galleryLength) => {
 		const currentIndex = this.state.currentIndex;
-		if (order === "left" && currentIndex !== 0) {
+		const maxIndex = (galleryLength - 1) ;
+		if (order === "left") {
+			if(currentIndex === 0){
+				this.setState({currentIndex : maxIndex });
+				return;
+			}
 			this.setState({ currentIndex: currentIndex - 1 });
 		}
 		if (order === "right") {
 			if (currentIndex === galleryLength - 1) {
+				this.setState({currentIndex : 0});
 				return;
 			}
 			this.setState({ currentIndex: currentIndex + 1 });
 		}
 	};
 
-	photoWithArrowsOrNot = (product) => {
+	cartPhotos = (product) => {
 		if (product.gallery.length === 1) {
 			return null;
 		} else {
 			return (
 				<div className="images-route">
-					<button onClick={() => this.changePhoto("left")}>{"<"}</button>
+					<button onClick={() => this.changePhoto("left", product.gallery.length)}>{"<"}</button>
 					<button
 						onClick={() => this.changePhoto("right", product.gallery.length)}
 					>
@@ -41,13 +47,9 @@ class CartImage extends Component {
 			<div className={`${isMini ? "mini-cart-image" : "main-cart-image"}`}>
 				<img
 					alt="product"
-					src={
-						isMini
-							? product.gallery[0]
-							: product.gallery[this.state.currentIndex]
-					}
+					src={product.gallery[this.state.currentIndex]}
 				/>
-				{!isMini ? this.photoWithArrowsOrNot(product) : null}
+				{this.cartPhotos(product)}
 			</div>
 		);
 	}

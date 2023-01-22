@@ -51,6 +51,23 @@
 	display: flex;
 	height: 75vh;
 	border: 1px solid rgba(0, 0, 0, 0.3);
+	position: relative;
+}
+
+.main-preview-img.out {
+	opacity: 0.5;
+}
+
+.out-of-stock-details {
+	width: max-content;
+	position: absolute;
+	top: 47%;
+	left : 30%;
+	font-size: 3rem;
+	font-weight: bolder;
+	text-shadow: black;
+	opacity: 0.8;
+	cursor: not-allowed;
 }
 
 .main-preview-img img {

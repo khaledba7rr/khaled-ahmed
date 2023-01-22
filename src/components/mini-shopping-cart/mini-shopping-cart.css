@@ -17,6 +17,29 @@
 	position: absolute;
 }
 
+.mini-cart-image {
+	position: relative;
+}
+.mini-cart-image .images-route {
+	display: flex;
+	position: absolute;
+	top: 45%;
+	width: 100%;
+	justify-content: space-between;
+	padding: 0.5rem;
+}
+
+.mini-cart-image .images-route * {
+	background-color: transparent;
+	border: none;
+	outline: none;
+	size: 2rem;
+	background-color: rgba(0,0,0,0.4);
+	color: white;
+	padding: 5px;
+	cursor: pointer;
+}
+
 /* Number of cart items circle*/
 
 .nav-cart-btn .cart-info {

@@ -36,8 +36,16 @@
     cursor: pointer;
 }
 
+.dropdown-content .selected-currency {
+    background-color: #5ece7b;
+}
+
 .dropdown-content span:hover {
     background-color: #f1f1f1;
+}
+
+.dropdown-content .selected-currency:hover {
+    background-color: #5ece7b;
 }
 
 @media screen and (max-width: 600px) {

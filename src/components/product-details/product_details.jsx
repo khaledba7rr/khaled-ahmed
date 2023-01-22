@@ -149,7 +149,7 @@ class ProductDetails extends Component {
 
 					<div className="price">
 						<p>price :</p>
-						<p>{price.currency.symbol + price.amount}</p>
+						<p>{price.currency.symbol + parseFloat(`${price.amount}`).toFixed(2)}</p>
 					</div>
 
 					<div className="details-btn">

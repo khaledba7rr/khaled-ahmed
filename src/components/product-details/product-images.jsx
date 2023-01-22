@@ -32,11 +32,15 @@ class ProductImages extends Component {
 					{this.renderImages(product)}
 				</div>
 
-				<div className="main-preview-img">
+				<div className= {`main-preview-img ${!product.inStock ? 'out' : null } `}>
 					<img
 						src={product.gallery[this.state.currentPhotoIndex]}
 						alt={"product photo " + this.state.currentPhotoIndex}
 					/>
+									{!product.inStock ? 
+				<div className="out-of-stock-details">
+					<span className="out-span">out of stock</span>
+				</div> : null }
 				</div>
 			</React.Fragment>
 		);

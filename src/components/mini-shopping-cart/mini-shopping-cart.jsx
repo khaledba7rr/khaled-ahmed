@@ -49,6 +49,7 @@ class MiniShoppingCart extends Component {
 
 	handleClicks = () => {
 		this.props.handleMiniCart();
+
 		if (this.props.isDropdownOpen){
 			this.props.handleDropdown();
 		}
@@ -87,9 +88,9 @@ class MiniShoppingCart extends Component {
 
 		return (
 			<React.Fragment>
-				<div onClick={() => this.handleClicks()} className="nav-shopping-cart">
+				<div className="nav-shopping-cart">
 					{/* MiniCart icon */}
-					<button
+					<button  onClick={() => this.handleClicks()}
 						className="nav-cart-btn"
 					>
 						<img className="img" src={cart} alt="cart" height="20vh" />

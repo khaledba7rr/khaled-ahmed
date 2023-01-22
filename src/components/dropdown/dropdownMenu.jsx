@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
 	return {
+		currentCurrency: state.setCurrentCurrency.currentCurrency,
 		isFilterOpen : state.handleClicks.isFilterOpen,
 		isMiniCartOpen: state.handleClicks.isMiniCartOpen,
 		isDropdownOpen: state.handleClicks.isDropdownOpen,
@@ -29,10 +30,10 @@ const mapStateToProps = (state) => {
 
 class DropdownMenu extends Component {
 
-	renderCurrencies = (currencies) => {
+	renderCurrencies = (currencies,  currentCurrency) => {
 		return currencies.map((currency, i) => {
 			return (
-				<span
+				<span className={currentCurrency === currency.symbol ? 'selected-currency' : null}
 					key={i}
 					onClick={() => {
 						this.props.changeCurrecy(currency.symbol);
@@ -55,7 +56,7 @@ class DropdownMenu extends Component {
 	};
 
 	render() {
-		const { loading , error, isDropdownOpen, handleDropdown } = this.props;
+		const { loading , error, isDropdownOpen, handleDropdown , currentCurrency } = this.props;
 		const { currencies } = loading ? [] : this.props.data;
 
 		
@@ -76,7 +77,7 @@ class DropdownMenu extends Component {
 					/>
 				</button>
 				<div className={`dropdown-content ${isDropdownOpen ? "active" : null}`}>
-					{this.renderCurrencies(currencies)}
+					{this.renderCurrencies(currencies, currentCurrency)}
 				</div>
 			</div>
 		);

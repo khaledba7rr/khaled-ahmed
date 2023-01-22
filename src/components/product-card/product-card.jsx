@@ -120,7 +120,7 @@ class ProductCard extends Component {
 								{brand + ""} {name}
 							</p>
 							<p className="product-price">
-								{price.currency.symbol + price.amount}
+								{price.currency.symbol + parseFloat(`${price.amount}`).toFixed(2) }
 							</p>
 						</div>
 					</Link>

@@ -34,7 +34,7 @@ class App extends Component {
 	handleCategory = (category) => {
 		this.setState({
 			currenctCategory: category,
-		});
+		});	
 	};
 
 	componentDidMount() {

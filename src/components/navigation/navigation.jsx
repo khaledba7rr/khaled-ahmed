@@ -45,7 +45,7 @@ class Navigation extends Component {
 						this.props.category === category.name ? "selected" : null
 					}`}
 					key={index}
-					onClick={() => this.props.onClick(category.name)}
+					onClick={() => {this.props.onClick(category.name); }}
 				>
 					{category.name}
 				</li>
@@ -75,7 +75,7 @@ class Navigation extends Component {
 					</div>
 
 					<div className="icons">
-						<p className="currency" onClick={this.props.handleDropdown}>{currentCurrency}</p>
+						<p className="currency" onClick={ () => { this.props.isMiniCartOpen ? this.props.handleMiniCart() : null; this.props.handleDropdown();}}>{currentCurrency}</p>
 						<DropdownMenu />
 						<MiniShoppingCart />
 					</div>
